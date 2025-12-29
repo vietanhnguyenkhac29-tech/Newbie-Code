@@ -1,0 +1,199 @@
+/* --- CÀI ĐẶT CHUNG --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    padding-top: 56px; /* Để chừa chỗ cho Header cố định */
+}
+
+/* --- HEADER --- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 56px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Logo và Menu bên trái */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 150px;
+}
+
+/* Thanh tìm kiếm ở giữa */
+.search-bar {
+    flex: 0 1 600px; /* Độ rộng tối đa */
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-button {
+    width: 64px;
+    border: none;
+    background-color: #f8f8f8;
+    border-left: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-button:hover { background-color: #f0f0f0; }
+
+/* Icon bên phải */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 150px;
+    justify-content: flex-end;
+}
+
+/* Nút và Icon chung */
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-btn:hover { background-color: #e5e5e5; }
+.material-icons { color: #606060; }
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+.main-logo { height: 28px; margin-right: 5px; }
+.logo-text { font-size: 18px; font-weight: bold; letter-spacing: -0.5px; }
+
+/* --- SIDEBAR --- */
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    background-color: white;
+    padding-top: 12px;
+    z-index: 1900;
+    transform: translateX(-100%); /* Ẩn menu */
+    transition: transform 0.2s ease-in-out;
+    border-right: 1px solid #e5e5e5;
+}
+/* sidebar */
+.sidebar.active { transform: translateX(0); /* Hiện sidebar */ }
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 40px;
+    text-decoration: none;
+    color: #0f0f0f;
+    font-size: 14px;
+    white-space: nowrap; /* Thêm dòng này để chữ luôn nằm trên 1 hàng */
+    overflow: hidden;    /* Ẩn phần thừa nếu sidebar quá hẹp */
+    text-overflow: ellipsis; /* Hiện dấu ... nếu chữ quá dài */
+}
+.sidebar-item:hover { background-color: #f2f2f2; }
+.sidebar-item .material-icons { margin-right: 24px; }
+.sidebar-divider { border: 0; border-top: 1px solid #e5e5e5; margin: 12px 0; }
+
+/* --- MAIN CONTENT & VIDEO GRID --- */
+.main-content {
+    padding: 24px;
+    margin-left: 0; /* Nội dung full màn hình */
+}
+
+/* Thanh danh mục */
+.category-nav {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+}
+.category-item {
+    padding: 6px 12px;
+    background-color: #f2f2f2; /* Sửa màu nền cho dễ nhìn */
+    border-radius: 8px;
+    text-decoration: none;
+    color: #0f0f0f;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.category-item.active { background-color: #0f0f0f; color: white; }
+
+/* Lưới Video */
+.video-grid {
+    display: grid;
+    /* Tự động chia cột: nhỏ nhất 300px, lớn nhất tự giãn */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+}
+
+.video-card { display: flex; flex-direction: column; }
+
+.video-thumbnail iframe {
+    width: 100%;
+    aspect-ratio: 16/9; /* Giữ tỷ lệ khung hình video chuẩn */
+    border-radius: 12px;
+    border: none;
+}
+
+.video-info { margin-top: 12px; display: flex; flex-direction: column; gap: 4px; }
+.video-title { font-size: 16px; font-weight: 600; line-height: 1.4; color: #0f0f0f; }
+.video-meta { font-size: 14px; color: #606060; }
+/* --- THANH CUỘN --- */
+::-webkit-scrollbar {
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #999;
+}
