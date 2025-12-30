@@ -197,55 +197,51 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #999;
 }
-/* --- RESPONSIVE ADJUSTMENTS --- */
+/* --- THIẾT LẬP PHẦN TỬ BỔ SUNG --- */
+.mobile-only { display: none; } /* Mặc định ẩn nút search mobile */
 
-/* 1. Cho máy tính bảng và màn hình nhỏ (Dưới 1024px) */
-@media (max-width: 1024px) {
-    .search-bar {
-        flex: 0 1 400px; /* Thu hẹp thanh tìm kiếm */
-    }
-}
-
-/* 2. Cho điện thoại di động (Dưới 768px) */
+/* --- RESPONSIVE CHO ĐIỆN THOẠI --- */
 @media (max-width: 768px) {
+    /* 1. Điều chỉnh Header chung */
     .header {
-        padding: 0 12px; /* Giảm padding header */
+        padding: 0 8px; /* Giảm khoảng cách lề */
+        justify-content: space-between;
     }
 
+    /* 2. Xử lý phần bên trái (Menu + Logo) */
+    .header-left {
+        min-width: auto;
+        gap: 4px;
+    }
+    .hide-mobile {
+        display: none; /* Ẩn chữ "Janaka Video" để dành chỗ cho các icon bên phải */
+    }
+
+    /* 3. Ẩn thanh tìm kiếm dài ở giữa */
     .search-bar {
-        display: none; /* Ẩn thanh search chính, thường mobile sẽ dùng icon search riêng */
+        display: none;
     }
 
-    .header-right .menu-btn:not(:last-child) {
-        display: none; /* Ẩn bớt các icon không quan trọng như video_call, notifications */
+    /* 4. Xử lý phần bên phải (Các Icon) */
+    .header-right {
+        min-width: auto;
+        display: flex;
+        gap: 2px; /* Khoảng cách cực nhỏ giữa các icon */
+        justify-content: flex-end;
     }
 
-    .main-content {
-        padding: 12px; /* Giảm khoảng cách lề để tăng không gian hiển thị video */
+    .mobile-only {
+        display: flex; /* Hiện icon tìm kiếm dạng nút bấm */
     }
 
-    .category-nav {
-        margin-bottom: 16px;
+    .menu-btn {
+        padding: 4px; /* Giảm vùng bấm để các icon sát nhau hơn */
     }
 
-    .video-grid {
-        /* Chỉnh lại để trên điện thoại nhỏ vẫn hiển thị được ít nhất 1-2 cột rõ nét */
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-        gap: 16px;
-    }
-
-    .video-title {
-        font-size: 14px; /* Chữ nhỏ lại một chút cho cân đối */
-    }
-}
-
-/* 3. Tối ưu cho điện thoại rất nhỏ (Dưới 480px) */
-@media (max-width: 480px) {
-    .logo-text {
-        display: none; /* Ẩn chữ "Janaka Video" chỉ để lại Logo hình cho đỡ chật */
-    }
-    
-    .video-grid {
-        grid-template-columns: 1fr; /* Chỉ hiện 1 cột duy nhất để video to rõ nhất */
+    /* 5. Nếu màn hình quá nhỏ (dưới 400px), ẩn luôn cả nút chuông thông báo */
+    @media (max-width: 400px) {
+        .hide-small {
+            display: none;
+        }
     }
 }
